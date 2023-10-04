@@ -1,9 +1,9 @@
-import { JSX } from "../src.deps.ts";
+import { ComponentChildren, JSX } from "../src.deps.ts";
 
 export type ChatInputProps =
   & Omit<JSX.HTMLAttributes<HTMLFormElement>, "icon">
   & {
-    icon: JSX.Element;
+    icon: ComponentChildren;
 
     postSrc: string;
 
