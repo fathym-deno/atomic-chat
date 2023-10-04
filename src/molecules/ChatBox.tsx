@@ -1,9 +1,9 @@
 import { classSet, JSX, moment, renderMarkdown } from "../src.deps.ts";
 
 export type ChatBoxProps = JSX.HTMLAttributes<HTMLDivElement> & {
-  content: string;
-
   color: string;
+
+  content: string;
 
   icon: JSX.Element;
 
