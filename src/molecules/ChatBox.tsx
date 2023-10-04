@@ -20,8 +20,8 @@ export function ChatBox(props: ChatBoxProps) {
       <div
         class={classSet(
           props,
-          "flex w-full mt-2 space-x-3",
-          props.justifyEnd ? "ml-auto mr-2 justify-end" : "ml-2",
+          "flex w-full mt-2",
+          props.justifyEnd ? "ml-auto mr-3 justify-end" : "ml-3",
         )}
       >
         <div
@@ -55,7 +55,7 @@ export function ChatBox(props: ChatBoxProps) {
             undefined,
             `bg-${props.color}-600 border-${props.color}-500 text-${props.color}-600`,
             "flex flex-shrink-0 h-6 w-6 md:h-10 md:w-10 justify-center rounded-full bg-opacity-10 border border-opacity-40 overflow-clip",
-            props.justifyEnd ? "order-2" : "order-1",
+            props.justifyEnd ? "order-2 ml-2" : "order-1 mr-2",
           )}
         >
           <div class="flex self-center">
