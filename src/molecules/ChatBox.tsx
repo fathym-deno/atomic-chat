@@ -35,7 +35,7 @@ export function ChatBox(props: ChatBoxProps) {
             class={classSet(
               undefined,
               `bg-${props.color}-600 border-${props.color}-500`,
-              "bg-opacity-10 border border-opacity-40 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg overflow-auto p-3 rounded-l-lg rounded-br-lg",
+              "bg-opacity-10 border border-opacity-40 max-w-screen-xs md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg overflow-auto p-3 rounded-l-lg rounded-br-lg",
             )}
           >
             <p
