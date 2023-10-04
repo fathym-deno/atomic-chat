@@ -21,7 +21,7 @@ export function ChatBox(props: ChatBoxProps) {
         class={classSet(
           props,
           "flex w-full mt-2 space-x-3",
-          props.justifyEnd ? "ml-auto mr-2 justify-end" : undefined,
+          props.justifyEnd ? "ml-auto mr-2 justify-end" : "ml-2",
         )}
       >
         <div
