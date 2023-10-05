@@ -1,21 +1,29 @@
-import { ComponentChildren, JSX } from "../src.deps.ts";
+import {
+  Action,
+  classSet,
+  ComponentChildren,
+  Input,
+  JSX,
+} from "../src.deps.ts";
 
 export type ChatInputProps =
   & Omit<JSX.HTMLAttributes<HTMLFormElement>, "icon">
   & {
-    icon: ComponentChildren;
+    children: ComponentChildren;
 
-    postSrc: string;
+    icon?: ComponentChildren;
 
     useOpenChat: boolean;
   };
 
 export function ChatInput(props: ChatInputProps) {
+  props.id = props.id || "chat-input";
+
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
 
-      const formEl: HTMLFormElement = document.querySelector("#chat-input")!;
+      const formEl: HTMLFormElement = document.querySelector(`#${props.id}`)!;
 
       formEl.submit();
     }
@@ -23,37 +31,40 @@ export function ChatInput(props: ChatInputProps) {
 
   return (
     <form
-      id="chat-input"
       method="post"
-      src={props.postSrc}
-      class="my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40"
+      {...props as JSX.HTMLAttributes<HTMLFormElement>}
+      class={classSet(
+        props,
+        "my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40",
+      )}
     >
-      <div className="relative z-0 flex">
-        <textarea
+      <div class="relative z-0 flex">
+        <Input
+          multiline={true}
           name="content"
-          className="block w-full rounded-sm rounded-r-none border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black"
+          class="block w-full rounded-sm rounded-r-none border-gray-300 text-sm shadow-sm focus:z-10 dark:bg-slate-950 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 text-black"
           placeholder="Ask Thinky... (Shift + Enter for a new line)"
           onKeyDown={handleKeyDown}
-        >
-        </textarea>
+        />
 
-        <button
+        <Action
           type="submit"
           for="version"
-          className="flex items-center space-x-1 rounded-sm rounded-l-none border border-l-0 border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300"
+          class="flex items-center space-x-1 rounded-sm rounded-l-none border border-l-0 border-blue-600 bg-blue-600 px-3 py-1.5 text-center text-xs font-medium text-white shadow-sm transition-all hover:border-blue-800 hover:bg-blue-800 focus:ring focus:ring-blue-200 disabled:cursor-not-allowed disabled:border-blue-300 disabled:bg-blue-300"
         >
-          {props.icon}
-        </button>
+          {props.icon || props.children}
+        </Action>
       </div>
-      <div className="mt-2">
-        <label className="inline-flex items-center">
-          <input
+      <div class="mt-2">
+        <label class="inline-flex items-center">
+          <Input
             type="checkbox"
             name="useOpenChat"
-            className="form-checkbox h-5 w-5 text-blue-600"
+            class="form-checkbox h-1 w-1 text-blue-600"
             checked={props.useOpenChat}
           />
-          <span className="ml-2 text-gray-700">Use Open Chat</span>
+
+          <span class="ml-2 text-gray-500">Use Open Chat</span>
         </label>
       </div>
     </form>
