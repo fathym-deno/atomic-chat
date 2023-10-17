@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "preact/hooks";
 import {
   Action,
   classSet,
@@ -24,6 +25,8 @@ export type ChatInputProps =
   };
 
 export function ChatInput(props: ChatInputProps) {
+  const chatInputRef = useRef<HTMLFormElement>(null);
+
   props.id = props.id || "chat-input";
 
   const handleKeyDown = (event: KeyboardEvent) => {
@@ -36,9 +39,22 @@ export function ChatInput(props: ChatInputProps) {
     }
   };
 
+  const scrollIntoView = () => {
+    setTimeout(() => {
+      if (chatInputRef?.current) {
+        chatInputRef?.current?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        scrollIntoView();
+      }
+    }, 0);
+  };
+
+  scrollIntoView();
+
   return (
     <form
       method="post"
+      ref={chatInputRef}
       {...(props as JSX.HTMLAttributes<HTMLFormElement>)}
       class={classSet(
         props,
