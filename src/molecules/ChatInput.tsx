@@ -42,7 +42,7 @@ export function ChatInput(props: ChatInputProps) {
   const scrollIntoView = () => {
     setTimeout(() => {
       if (chatInputRef?.current) {
-        chatInputRef?.current?.scrollIntoView({ behavior: "smooth" });
+        chatInputRef?.current?.scrollIntoView();
       } else {
         scrollIntoView();
       }
