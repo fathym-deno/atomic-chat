@@ -20,11 +20,10 @@ export function ChatBox(props: ChatBoxProps) {
       <div
         class={classSet(
           [
-            "flex w-full mt-2 mx-3",
-            props.justifyEnd ? "ml-auto justify-end" : undefined,
+            "-:flex -:w-full -:mt-2 -:mx-3",
+            props.justifyEnd ? "-:ml-auto -:justify-end" : undefined,
           ],
           props,
-          "-:",
         )}
       >
         <div

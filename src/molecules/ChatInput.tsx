@@ -58,10 +58,9 @@ export function ChatInput(props: ChatInputProps) {
       {...(props as JSX.HTMLAttributes<HTMLFormElement>)}
       class={classSet(
         [
-          "my-3 rounded-md p-3 bg-blue-600 bg-opacity-10 border border-blue-500 border-opacity-40",
+          "-:my-3 -:rounded-md -:p-3 -:bg-blue-600 -:bg-opacity-10 -:border -:border-blue-500 -:border-opacity-40",
         ],
         props,
-        "-:",
       )}
     >
       <div class="relative z-0 flex flex-col md:flex-row">

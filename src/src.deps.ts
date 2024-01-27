@@ -6,4 +6,4 @@ export const moment = npmMoment;
 
 export * from "https://deno.land/x/fathym_common@v0.0.137/mod.ts";
 
-export * from "https://deno.land/x/fathym_atomic@v0.0.117/mod.ts";
+export * from "https://deno.land/x/fathym_atomic@v0.0.118/mod.ts";
